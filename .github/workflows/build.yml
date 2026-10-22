@@ -1,0 +1,61 @@
+name: Build Sidely IPA
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, sidely]
+    paths-ignore:
+      - '**.md'
+      - 'LICENSE'
+      - 'NOTICE'
+      - '.editorconfig'
+      - '.gitignore'
+      - '.gitmodules'
+      - '.github/**'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build unsigned Sidely IPA
+    runs-on: macos-26
+
+    steps:
+      - name: Checkout (with submodules)
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 1
+
+      - name: Install tooling
+        run: brew install ldid xcbeautify
+
+      - name: Setup Xcode
+        uses: maxim-lobanov/setup-xcode@v1.6.0
+        with:
+          xcode-version: "26.4"
+
+      - name: Build IPA
+        run: make build fakesign ipa
+
+      - name: Upload IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: Sidely-unsigned-ipa
+          path: Sidely.ipa
+          if-no-files-found: error
+
+      - name: Upload build logs (on failure)
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Sidely-build-logs
+          path: |
+            build-logs.zip
+            *.log
+          if-no-files-found: ignore

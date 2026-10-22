@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "name": "Sidely",
+  "identifier": "com.sidely.Sidely",
+  "subtitle": "News and updates from the Sidely project",
+  "description": "Sidely is an iOS app store and sideloading client with configurable sources and quality-of-life improvements.",
+  "iconURL": "https://raw.githubusercontent.com/ThatRey/Sidely/main/branding/SidelyIcon-256.png",
+  "tintColor": "7C5CFF",
+  "apps": [],
+  "news": [
+    {
+      "title": "Welcome to Sidely",
+      "identifier": "welcome",
+      "caption": "Sidely is ready. Thanks for trying the fork. Tap here to visit the project on GitHub.",
+      "date": "2026-10-22",
+      "url": "https://github.com/ThatRey/Sidely",
+      "tintColor": "7C5CFF"
+    },
+    {
+      "title": "Sidely 1.0.0",
+      "identifier": "release-1.0.0",
+      "caption": "The first Sidely build is available. Report bugs and suggestions on GitHub.",
+      "date": "2026-10-22",
+      "url": "https://github.com/ThatRey/Sidely/issues",
+      "tintColor": "7C5CFF"
+    }
+  ]
+}

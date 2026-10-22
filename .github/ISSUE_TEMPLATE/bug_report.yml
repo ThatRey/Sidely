@@ -1,0 +1,48 @@
+name: Bug Report
+description: Report a bug
+title: "[BUG] "
+labels: ["bug"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Please note that the issue tracker is not for support
+        Thanks for taking the time to fill out this bug report! Before you continue, please **search the existing issues for this repository** in case the bug has already been reported.
+
+        Sidely is an independent fork. Please do not report Sidely bugs to SideStore, AltStore, or Apple.
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the bug
+      description: What is the bug and how did you discover it?
+      placeholder: Please be clear and concise with your description.
+    validations:
+      required: true
+  - type: textarea
+    id: how-to-reproduce
+    attributes:
+      label: Instructions to reproduce
+      description: Please include clear and consistent instructions for reproducing the bug to make it easier for us to fix it.
+    validations:
+      required: true
+  - type: input
+    id: app-version
+    attributes:
+      label: What version of Sidely are you using?
+      description: To retrieve this, go to `Settings` in the Sidely app and scroll down to the bottom.
+    validations:
+      required: true
+  - type: input
+    id: ios-version
+    attributes:
+      label: iOS version and device
+      description: Which iOS version and device model are you using?
+      placeholder: e.g. iOS 18.2, iPhone 15 Pro
+    validations:
+      required: true
+  - type: textarea
+    id: other-info
+    attributes:
+      label: Other info
+      description: If you have any other comments, other info that might be useful, or if you found a workaround, please put it here.

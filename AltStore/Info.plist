@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>ALTAnisetteURL</key>
-	<string>https://ani.sidestore.io</string>
+	<string>http://192.168.2.107:6969</string>
 	<key>SidelyDefaultSourcesURL</key>
 	<string>https://raw.githubusercontent.com/ThatRey/Sidely/main/source/default-sources.json</string>
 	<key>SidelyCommunitySourceURL</key>

@@ -1,0 +1,12 @@
+{
+  "servers": [
+    {
+      "name": "Sidely Local (LAN)",
+      "address": "http://192.168.2.107:6969"
+    },
+    {
+      "name": "Sidely Local (mDNS)",
+      "address": "http://DESKTOP-O3DTEIE.local:6969"
+    }
+  ]
+}

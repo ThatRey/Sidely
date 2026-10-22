@@ -113,8 +113,12 @@ public actor AnisetteServersManager {
     }
 
     public func getActiveServerURLs() -> [String] {
-        let servers = loadLocalServers()
-        return servers.filter { !$0.isHidden }.map(\.address)
+        let servers = loadLocalServers().filter { !$0.isHidden }.map(\.address)
+        if servers.isEmpty {
+            // Fall back to the built-in Anisette server when the catalog hasn't been synced yet.
+            return [AppConstants.Anisette.Servers.defaultServerURL]
+        }
+        return servers
     }
 
     // MARK: - Offline File Mode State Keys

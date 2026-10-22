@@ -65,6 +65,26 @@ The built-in news feed lives in [`source/sidely.json`](source/sidely.json) and i
 
 Each post needs `identifier`, `title`, `caption`, `date`, and `tintColor`. See [`source/README.md`](source/README.md) for the full schema.
 
+## Anisette server (optional)
+
+Sidely uses on-device Anisette by default. This fork also ships a local Anisette v3 server catalog at [`source/anisette-servers.json`](source/anisette-servers.json) for the Windows/WSL server at `http://192.168.2.107:6969`.
+
+On the PC, start the WSL distro and its Docker container:
+
+```powershell
+wsl -d Ubuntu-24.04 -u root -- /usr/local/bin/start-anisette.sh
+```
+
+Allow the port through Windows Firewall from an elevated PowerShell:
+
+```powershell
+New-NetFirewallRule -DisplayName "Sidely Anisette (LAN)" `
+  -Direction Inbound -Action Allow -Protocol TCP -LocalPort 6969 `
+  -RemoteAddress 192.168.2.0/24 -Profile Public,Private
+```
+
+On the iPhone, open **Settings → Advanced → User Customizations**, turn off **On-Device Anisette**, then open **Settings → Advanced → Anisette Servers** and select **Sidely Local (LAN)**. If your router changes the PC's IP, update `source/anisette-servers.json`, `ALTAnisetteURL` in `AltStore/Info.plist`, and `defaultServerURL` in `SideStore/AppConstants.swift`.
+
 ## Project layout
 
 | Path | Purpose |

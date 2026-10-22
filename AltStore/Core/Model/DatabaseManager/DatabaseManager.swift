@@ -227,19 +227,43 @@ public class DatabaseManager: @unchecked Sendable
             // Make sure to always update source URL to be current.
             try! altStoreSource.setSourceURL(Source.altStoreSourceURL)
             
+            let storeApp: StoreApp
+            
+            if let app = StoreApp.first(satisfying: NSPredicate(format: "%K == %@", #keyPath(StoreApp.bundleIdentifier), StoreApp.altstoreAppID), in: context)
+            {
+                storeApp = app
+            }
+            else
+            {
+                storeApp = StoreApp.makeAltStoreApp(version: localAppBundle.version, buildVersion: nil, in: context)
+            }
+            
+            // Attach the built-in app to the current source before removing the legacy source,
+            // because deleting a Source cascades to its apps.
+            storeApp.source = altStoreSource
+            
             // Remove the old upstream SideStore source and its news from earlier builds.
             // Sidely now uses its own built-in source (source/sidely.json).
             let legacySourceID = "sidestore.io/apps-v2.json"
-            if let legacySource = Source.first(satisfying: NSPredicate(format: "%K == %@", #keyPath(Source.identifier), legacySourceID), in: context)
+            if let legacySource = Source.first(satisfying: NSPredicate(format: "%K == %@", #keyPath(Source.identifier), legacySourceID), in: context),
+               legacySource !== altStoreSource
             {
-                for newsItem in legacySource.newsItems
+                for newsItem in Array(legacySource.newsItems)
                 {
                     context.delete(newsItem)
                 }
                 
-                for app in legacySource.apps where app.installedApp == nil
+                for app in Array(legacySource.apps)
                 {
-                    context.delete(app)
+                    if app.installedApp == nil
+                    {
+                        context.delete(app)
+                    }
+                    else
+                    {
+                        // Detach installed apps so the source's cascade delete doesn't remove them.
+                        app.source = nil
+                    }
                 }
                 
                 context.delete(legacySource)
@@ -252,21 +276,6 @@ public class DatabaseManager: @unchecked Sendable
             {
                 context.delete(newsItem)
             }
-            
-            let storeApp: StoreApp
-            
-            if let app = StoreApp.first(satisfying: NSPredicate(format: "%K == %@", #keyPath(StoreApp.bundleIdentifier), StoreApp.altstoreAppID), in: context)
-            {
-                storeApp = app
-            }
-            else
-            {
-                storeApp = StoreApp.makeAltStoreApp(version: localAppBundle.version, buildVersion: nil, in: context)
-            }
-            
-            // Always attach the built-in app to the current built-in source.
-            // This also migrates it away from the legacy SideStore source before that source is deleted.
-            storeApp.source = altStoreSource
                         
             let serialNumber = CertificateManager.shared.getSigningCertificate(at: Bundle.Info.activeBundleURL)?.serialNumber
             

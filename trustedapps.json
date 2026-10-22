@@ -2,13 +2,6 @@
   "version": 1,
   "trusted": [
     {
-      "identifier": "io.sidestore.example"
-    },
-    {
-      "identifier": "com.sidestoreapps.community",
-      "sourceURL": "https://community-apps.sidestore.io/sidecommunity.json"
-    },
-    {
       "identifier": "com.stik.stikdebug",
       "sourceURL": "https://stikdebug.xyz/index.json"
     },
@@ -61,10 +54,6 @@
       "sourceURL": "https://pokemmo.eu/altstore/"
     },
     {
-      "identifier": "dev.theodyssey.sidestore",
-      "sourceURL": "https://theodyssey.dev/altstore/odysseysource.json"
-    },
-    {
       "identifier": "stream.yattee",
       "sourceURL": "https://repos.yattee.stream/alt/apps.json"
     },
@@ -82,13 +71,6 @@
     }
   ],
   "sources": [
-    {
-      "identifier": "io.sidestore.example"
-    },
-    {
-      "identifier": "com.sidestoreapps.community",
-      "sourceURL": "https://community-apps.sidestore.io/sidecommunity.json"
-    },
     {
       "identifier": "com.stik.stikdebug",
       "sourceURL": "https://stikdebug.xyz/index.json"
@@ -136,10 +118,6 @@
     {
       "identifier": "eu.pokemmo.altstore",
       "sourceURL": "https://pokemmo.eu/altstore/"
-    },
-    {
-      "identifier": "dev.theodyssey.sidestore",
-      "sourceURL": "https://theodyssey.dev/altstore/odysseysource.json"
     },
     {
       "identifier": "stream.yattee",

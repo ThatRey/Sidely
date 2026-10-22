@@ -311,7 +311,6 @@ private extension UITests {
         
         // Data model for recommended sources. NOTE: This list order is required to be the same as that of "Add Source" Screen
         let recommendedSources: [(identifier: String, alertTitle: String, requiresSwipe: Bool)] = [
-            ("Sidely Team Picks\ncommunity-apps.sidestore.io/sidecommunity.json", "Sidely Team Picks", false),
             ("Provenance EMU\nprovenance-emu.com/apps.json", "Provenance EMU", false),
             ("Countdown Respository\nneoarz.github.io/Countdown-App/Countdown.json", "Countdown Respository", false),
             ("OatmealDome's AltStore Source\naltstore.oatmealdome.me", "OatmealDome's AltStore Source", true),
@@ -319,7 +318,6 @@ private extension UITests {
             ("Flyinghead\nflyinghead.github.io/flycast-builds/altstore.json", "Flyinghead", false),
 //            ("PojavLauncher Repository\nalt.crystall1ne.dev", "PojavLauncher Repository", false),            // not a stable source, sometimes becomes unreachable, so disabled
             ("PokeMMO\npokemmo.eu/altstore/", "PokeMMO", true),
-            ("Odyssey\ntheodyssey.dev/altstore/odysseysource.json", "Odyssey", false),
             ("Yattee\nrepos.yattee.stream/alt/apps.json", "Yattee", false),
             ("ThatStella7922 Source\nThe home for all apps ThatStella7922", "ThatStella7922 Source", false)
         ]
@@ -351,11 +349,11 @@ private extension UITests {
         srcAdd.tap()
 
         let collectionViewsQuery = app.collectionViews
-        let appsSidestoreIoTextField = collectionViewsQuery.textFields["apps.sidestore.io"]
-        _ = appsSidestoreIoTextField.waitForExistence(timeout: 0.5)
-        appsSidestoreIoTextField.tap()
-        appsSidestoreIoTextField.tap()
-        _ = appsSidestoreIoTextField.waitForExistence(timeout: 0.5)
+        let addSourceTextField = collectionViewsQuery.textFields["https://example.com/apps.json"]
+        _ = addSourceTextField.waitForExistence(timeout: 0.5)
+        addSourceTextField.tap()
+        addSourceTextField.tap()
+        _ = addSourceTextField.waitForExistence(timeout: 0.5)
         let pasteButton = collectionViewsQuery.staticTexts["Paste"]
         _ = pasteButton.waitForExistence(timeout: 0.5)
         pasteButton.tap()
@@ -370,7 +368,7 @@ private extension UITests {
 //        }
         
         if app.keyboards.count > 0 {
-            appsSidestoreIoTextField.typeText("\n") // Fallback to newline so that soft kb is dismissed
+            addSourceTextField.typeText("\n") // Fallback to newline so that soft kb is dismissed
             _ =  app.exists || app.waitForExistence(timeout: 0.5)
         }
         
@@ -405,7 +403,6 @@ private extension UITests {
         
         // Data model for recommended sources. NOTE: This list order is required to be the same as that of "Add Source" Screen
         let recommendedSources: [(identifier: String, alertTitle: String, requiresSwipe: Bool)] = [
-            ("Sidely Team Picks\ncommunity-apps.sidestore.io/sidecommunity.json", "Sidely Team Picks", false),
             ("Provenance EMU\nprovenance-emu.com/apps.json", "Provenance EMU", false),
             ("Countdown Respository\nneoarz.github.io/Countdown-App/Countdown.json", "Countdown Respository", false),
             ("OatmealDome's AltStore Source\naltstore.oatmealdome.me", "OatmealDome's AltStore Source", false),
@@ -439,18 +436,18 @@ private extension UITests {
 
 
         let collectionViewsQuery = app.collectionViews
-        let appsSidestoreIoTextField = collectionViewsQuery.textFields["apps.sidestore.io"]
-        _ = appsSidestoreIoTextField.waitForExistence(timeout: 0.5)
-        appsSidestoreIoTextField.tap()
-        appsSidestoreIoTextField.tap()
-        _ = appsSidestoreIoTextField.waitForExistence(timeout: 0.5)
+        let addSourceTextField = collectionViewsQuery.textFields["https://example.com/apps.json"]
+        _ = addSourceTextField.waitForExistence(timeout: 0.5)
+        addSourceTextField.tap()
+        addSourceTextField.tap()
+        _ = addSourceTextField.waitForExistence(timeout: 0.5)
         let pasteButton = collectionViewsQuery.staticTexts["Paste"]
         _ = pasteButton.waitForExistence(timeout: 0.5)
         pasteButton.tap()
 
         
         if app.keyboards.count > 0 {
-            appsSidestoreIoTextField.typeText("\n") // Fallback to newline so that soft kb is dismissed
+            addSourceTextField.typeText("\n") // Fallback to newline so that soft kb is dismissed
             _ =  app.exists || app.waitForExistence(timeout: 0.5)
         }
         

@@ -141,15 +141,12 @@ public enum AppConstants {
         public static let appleAuthDevices          = Constants.URLs.appleAuthDevices
         public static let appleAccount              = URL(string: "https://account.apple.com")!
 
-        // Sidely Documentation & Community URLs. Documentation still lives
-        // upstream while the fork is young; point these at your own docs when
-        // you have them.
-        public static let pairingDocumentation      = URL(string: "https://docs.sidestore.io/docs/advanced/pairing-file")!
-        public static let errorCodesDocumentation   = URL(string: "https://docs.sidestore.io/docs/troubleshooting/error-codes")!
+        // Sidely documentation and community links.
+        public static let pairingDocumentation      = URL(string: "https://github.com/ThatRey/Sidely#readme")!
+        public static let errorCodesDocumentation   = URL(string: "https://github.com/ThatRey/Sidely/issues")!
         public static var website                   : URL { SidelyConfig.websiteURL }
         public static var github                    : URL { SidelyConfig.githubURL }
         public static var issues                    : URL { SidelyConfig.issuesURL }
-        public static let sideStoreDiscord          = URL(string: "https://discord.gg/sidestore-949183273383395328")!
     }
 
     public enum Minimuxer {

@@ -5,7 +5,7 @@ Sidely is a **fork** of [SideStore](https://github.com/SideStore/SideStore). It 
 ## Scope of this fork
 
 - The app is branded **Sidely**. Bundle IDs live under `com.sidely`, the URL scheme is `sidely://`, and the Swift module name intentionally remains `SideStore` so storyboards and `@testable import SideStore` keep working.
-- Upstream service endpoints (`sidestore.io`, `ani.sidestore.io`, `servers.sidestore.io`) are still used for anisette and the default source list because Sidely does not host its own infrastructure. They are centralized in `SideStore/SidelyConfig.swift` and can be overridden from `AltStore/Info.plist`.
+- Sidely hosts its own news feed, default source list, and Anisette server catalog under `source/`, served from `raw.githubusercontent.com/ThatRey/Sidely/main`. The optional Anisette server runs locally at `http://192.168.2.107:6969`.
 - Do not change signing, pairing, installation, or networking behavior unless the task explicitly requires it. These paths have device-specific edge cases across iOS versions.
 
 ## Project structure

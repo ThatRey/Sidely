@@ -100,7 +100,7 @@ On the iPhone, open **Settings → Advanced → User Customizations**, turn off 
 
 ## Upstream relationship and contributing
 
-Sidely tracks SideStore's `develop` branch. Fixes that belong upstream should be proposed to [SideStore](https://github.com/SideStore/SideStore) by a human, following the rules in SideStore's `AGENTS.md` at the time (SideStore does not accept AI-generated pull requests, issues, or comments). Do not send AI-authored PRs to SideStore.
+Sidely is based on a snapshot of SideStore's `develop` branch. Upstream fixes can be merged manually when needed. Fixes that belong upstream should be proposed to [SideStore](https://github.com/SideStore/SideStore) by a human, following the rules in SideStore's `AGENTS.md` at the time (SideStore does not accept AI-generated pull requests, issues, or comments). Do not send AI-authored PRs to SideStore.
 
 For this fork, see [CONTRIBUTING.md](CONTRIBUTING.md).
 

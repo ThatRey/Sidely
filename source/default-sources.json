@@ -54,10 +54,6 @@
                         "sourceURL":  "https://pokemmo.eu/altstore/"
                     },
                     {
-                        "identifier":  "dev.theodyssey.sidestore",
-                        "sourceURL":  "https://theodyssey.dev/altstore/odysseysource.json"
-                    },
-                    {
                         "identifier":  "stream.yattee",
                         "sourceURL":  "https://repos.yattee.stream/alt/apps.json"
                     },

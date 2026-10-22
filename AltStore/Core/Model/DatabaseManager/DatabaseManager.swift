@@ -262,8 +262,11 @@ public class DatabaseManager: @unchecked Sendable
             else
             {
                 storeApp = StoreApp.makeAltStoreApp(version: localAppBundle.version, buildVersion: nil, in: context)
-                storeApp.source = altStoreSource
             }
+            
+            // Always attach the built-in app to the current built-in source.
+            // This also migrates it away from the legacy SideStore source before that source is deleted.
+            storeApp.source = altStoreSource
                         
             let serialNumber = CertificateManager.shared.getSigningCertificate(at: Bundle.Info.activeBundleURL)?.serialNumber
             
